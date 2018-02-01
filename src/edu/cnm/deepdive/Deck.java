@@ -6,6 +6,7 @@ public class Deck {
 
   private Card[] cards;
   private Random rng;
+  private int nextCardToDraw = 0;
 
 
 
@@ -36,8 +37,13 @@ public class Deck {
         cards[source] = temp;
       }
     }
+    nextCardToDraw = 0;
   }
+  // FIXME - Do something smarter with the out-of-bounds problem.
+  public Card draw() throws ArrayIndexOutOfBoundsException {
+    return cards[nextCardToDraw++];
 
+  }
 }
 
 
