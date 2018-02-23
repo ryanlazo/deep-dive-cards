@@ -48,15 +48,15 @@ public class Deck {
     cards = sort(cards);
   }
 
-  private Card[] sort (Card[] cards) {
-    if (cards.length == 1) {
-      return cards;
+  private Card[] sort (Card[] deck) {
+    if (deck.length == 1) {
+      return deck;
     }
-  int midpoint = cards.length / 2;
+  int midpoint = deck.length / 2;
     Card[] a = new Card[midpoint];
-    Card[] b = new Card[cards.length - midpoint];
-    System.arraycopy(cards, 0, a, 0, a.length);
-    System.arraycopy(cards, midpoint, b, 0, b.length);
+    Card[] b = new Card[deck.length - midpoint];
+    System.arraycopy(deck, 0, a, 0, a.length);
+    System.arraycopy(deck, midpoint, b, 0, b.length);
     a = sort(a);
     b = sort(b);
     return merge (a,b);
