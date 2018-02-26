@@ -2,11 +2,12 @@ package edu.cnm.deepdive.blackjack;
 
 import edu.cnm.deepdive.Card;
 import edu.cnm.deepdive.Rank;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class Hand implements Comparable<Hand> {
+public class Hand implements Comparable<Hand> , Iterable<Card> {
 
   private static final int HIGH_ACE_INCREMENT = 10;
   private static final int WINNING_TOTAL = 21;
@@ -16,6 +17,7 @@ public class Hand implements Comparable<Hand> {
   private boolean bust;
   private boolean blackjack;
   private int value;
+
 
   static {
     values = Map.ofEntries(
@@ -63,6 +65,10 @@ public class Hand implements Comparable<Hand> {
     return value;
   }
 
+  public int size() {
+    return cards.size();
+  }
+
   private void update() {
     int aces = 0;
     value = 0;
@@ -97,5 +103,10 @@ public class Hand implements Comparable<Hand> {
      result = Integer.compare(this.value(), hands.value);
    }
     return result;
+  }
+
+  @Override
+  public Iterator<Card> iterator() {
+    return cards.iterator();
   }
 }
